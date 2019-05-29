@@ -1,0 +1,25 @@
+class Solution {
+public:
+    vector<int> twoSum(vector<int>& nums, int target) {
+        int i = 0, complement = 0;
+        map<int, int> intMap;
+        map<int, int>::iterator it;
+        vector<int> result;
+        
+        for (i = 0; i < nums.size(); i++)
+        {
+            complement  = target - nums[i];
+            it = intMap.find(complement);
+            if (it != intMap.end())
+            {
+                result.push_back(it->second);
+                result.push_back(i);
+                return result;
+            } // end of if loop
+            
+            intMap.insert(it, make_pair(nums[i], i));
+        }// end of for loop
+        
+        return result;
+    } // end of function
+};
