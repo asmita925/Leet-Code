@@ -1,0 +1,37 @@
+class Solution {
+public:
+    int lengthOfLongestSubstring(string s) {
+        int maxLen = 0, len = 0, i = 0;
+        map<char, int> charMap;
+        map<char, int>::iterator it;
+        
+        for (i = 0; i < s.length(); i++)
+        {
+            it = charMap.find(s[i]);
+            
+            if (it != charMap.end())
+            {
+                if (len > maxLen)
+                {
+                    maxLen =  len;
+                }
+                
+                i = it->second;
+                len = 0;
+                charMap.clear();
+                continue;
+            } else {
+                charMap.insert(make_pair(s[i], i));
+                len++;
+            }// end of if 
+            
+            if (len > maxLen)
+            {
+                maxLen =  len;
+            }
+        } // end of for loop
+        
+        return maxLen;
+    }// end of func
+};
+
