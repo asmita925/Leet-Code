@@ -56,4 +56,3 @@ public:
         return result;
     } // end of function
 };
-
