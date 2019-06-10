@@ -1,0 +1,43 @@
+class Solution {
+    map<char, string> phone;
+    vector<string> result;
+public:
+    void initializePhone() {
+        phone.insert(make_pair('2', "abc"));
+        phone.insert(make_pair('3', "def"));
+        phone.insert(make_pair('4', "ghi"));
+        phone.insert(make_pair('5', "jkl"));
+        phone.insert(make_pair('6', "mno"));
+        phone.insert(make_pair('7', "pqrs"));
+        phone.insert(make_pair('8', "tuv"));
+        phone.insert(make_pair('9', "wxyz"));
+    }
+    
+    void backtrack(string digits, string nextDigits) {
+        map<char, string>::iterator it;
+        string s;
+        int j = 0;
+        
+        if (digits.length() == 0)
+        {
+            if (nextDigits.length() > 0)
+            {
+                result.push_back(nextDigits);
+            }
+            
+            return;
+        }
+        
+        s = phone[digits.at(0)];
+        for (j = 0; j < s.length(); j++)
+        {
+             backtrack(digits.substr(1, digits.length()), nextDigits+s.at(j));
+        }
+    }
+    
+    vector<string> letterCombinations(string digits) {
+        initializePhone();
+        backtrack(digits, "");
+        return result;
+    } // end of func
+};
