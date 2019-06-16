@@ -1,0 +1,22 @@
+class Solution {
+public:
+    int removeElement(vector<int>& nums, int val) {
+        int i = 0, j = 0;
+        
+        if (nums.size() == 0)
+        {
+            return 0;
+        }
+        
+        for (j = 0; j < nums.size(); j++)
+        {
+            if (nums.at(j) != val)
+            {
+                nums.at(i) = nums.at(j);
+                i++;
+            }
+        } // end of for loop
+        
+        return i;
+    }
+};
