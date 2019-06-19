@@ -1,0 +1,48 @@
+class Solution {
+public:
+    string countAndSayHelper(string s)
+    {
+        int i = 0;
+        string newNum = "";
+        char c, count = '0';
+        
+        if (s.length() == 0)
+        {
+            return newNum;
+        }
+        
+        while (i != s.length())
+        {
+            c = s.at(i);
+            count = '0';
+            
+            while (i < s.length() && s.at(i) == c)
+            {
+                count++;
+                i++;
+            }
+            
+            newNum += count;
+            newNum += s.at(i-1);
+        } // end of for loop
+        
+        return newNum;
+    }
+    
+    string countAndSay(int n) {
+        int i = 0;
+        string result = "1";
+        
+        if (n < 1)
+        {
+            return result;
+        }
+         
+        for (i = 1; i < n; i++)
+        {
+            result = countAndSayHelper(result);
+        }
+        
+        return result;
+    } // end of func
+};
