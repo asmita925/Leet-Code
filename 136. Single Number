@@ -1,0 +1,13 @@
+class Solution {
+public:
+    int singleNumber(vector<int>& nums) {
+        int i = 0, bitResult = 0;
+        
+        while(i < nums.size())
+        {
+            bitResult ^= nums.at(i);
+            i++;
+        }
+        
+        return bitResult;
+};
