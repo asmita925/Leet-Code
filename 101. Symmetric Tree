@@ -23,7 +23,9 @@ public:
         
         return false;
     
+    } // end of func
     
     bool isSymmetric(TreeNode* root) { 
         return checkSymmetricRecursively(root, root);
+    } // end of func
 };
