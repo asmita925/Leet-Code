@@ -1,0 +1,31 @@
+class Solution {
+public:
+    int majorityElement(vector<int>& nums) {
+        int i = 0, max = 0, maxNum = 0;
+        map<int, int> intMap;
+        map<int, int>::iterator it;
+        
+        for (i = 0; i < nums.size(); i++)
+        
+            it = intMap.find(nums.at(i));
+            
+            if (it == intMap.end())
+            
+                intMap.insert(pair<int, int>(nums.at(i), 1));
+            } else {
+                it->second += 1;
+            
+        } // end of for loop
+        
+        for (it = intMap.begin(); it != intMap.end(); it++)
+        
+            if (it->second > max)
+            
+                max = it->second;
+                maxNum = it->first;
+            
+        } // end of for loop
+        
+        return maxNum;
+    } // end of func
+};
