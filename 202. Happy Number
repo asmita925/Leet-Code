@@ -1,0 +1,44 @@
+class Solution {
+public:
+    bool isHappy(int n) {
+        int sum = 0;
+        map <int, int> intMap;
+        map <int, int>::iterator it;
+        
+        sum = getSumSquareOfDigits(n);
+        
+        while (sum != n && sum != 1)
+        {
+            it = intMap.find(sum);
+            
+            if (it == intMap.end())
+            {
+                intMap.insert(pair<int, int>(sum, 1));
+            } else {
+                break;
+            }
+
+            sum = getSumSquareOfDigits(sum);
+        } // end of while loop
+        
+        if (sum == 1)
+        {
+            return true;
+        } else {
+            return false;
+        }
+    }
+    
+    int getSumSquareOfDigits(int num)
+    {
+        int sum = 0;
+        
+        while (num > 0)
+        {
+            sum = sum + (num%10) * (num%10);
+            num = num/10;
+        } // end of while loop
+        
+        return sum;
+    }
+};
