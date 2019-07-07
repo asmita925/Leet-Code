@@ -1,0 +1,25 @@
+class Solution {
+public:
+    bool containsDuplicate(vector<int>& nums) {
+        map<int, int> intMap;
+        map<int, int>::iterator it;
+        int i = 0;
+        
+        if (nums.size() <= 1)
+        {
+            return false;
+        }
+        
+        sort(nums.begin(), nums.end());
+        
+        for (i = 1; i < nums.size(); i++)
+        {
+            if (nums.at(i) == nums.at(i-1))
+            {
+                return true;
+            }
+        }
+        
+        return false;
+    }
+};
