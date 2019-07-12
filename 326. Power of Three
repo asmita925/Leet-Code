@@ -1,0 +1,33 @@
+class Solution {
+public:
+    
+    int returnMaxPowInIntRange(int base)
+    {
+        int power = 0;
+        
+        while (pow(base, power) < INT_MAX)
+        {
+            power++;
+        }
+        
+        return power - 1;
+    }
+    
+    bool isPowerOfThree(int n) {
+        int power = 0, maxNum = 0;
+        
+        if (n <= 2)
+        {
+            return false;
+        }
+        
+        power = returnMaxPowInIntRange(3);
+        maxNum = pow(3, power);
+        if (maxNum % n == 0)
+        {
+            return true;
+        }
+        
+        return false;
+    } // end of func
+};
