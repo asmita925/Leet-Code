@@ -1,0 +1,29 @@
+int guess(int num);
+
+class Solution {
+public:
+    int guessNumber(int n) {
+        int low = 1, high = n, mid = 0, result = 0;
+        
+        if (n == 1)
+        {
+            return 1;
+        }
+        
+        while (low <= high)
+        {
+            mid = low + (high - low)/2;
+            result =  guess(mid);
+            if (result == 0)
+            {
+                break;
+            } else if (result == 1) {
+                low = mid + 1;
+            } else {
+                high = mid - 1;
+            }
+        }// end of while loop
+        
+        return mid;
+    }
+};
