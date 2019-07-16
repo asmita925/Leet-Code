@@ -1,0 +1,40 @@
+class Solution {
+public:
+    char findTheDifference(string s, string t) {
+        int  i = 0;
+        string::size_type found;
+        map <char, int> strMap;
+        map <char, int>::iterator it;
+        
+        if (s.length() >= t.length())
+        {
+            return 0;
+        }
+        
+        for (i = 0; i < s.length(); i++)
+        {
+            it = strMap.find(s.at(i));
+            
+            if (it == strMap.end())
+            {
+                strMap.insert(pair<char, int>(s.at(i), 1));
+            } else {
+                it->second++;
+            }
+        } // end of s loop
+        
+        for (i = 0; i < t.length(); i++)
+        {
+            it = strMap.find(t.at(i));
+            
+            if (it == strMap.end() || it->second == 0)
+            {
+                return t.at(i);
+            } else {
+                it->second--;
+            }
+        } // end of t loop
+        
+        return 0;
+    }
+};
