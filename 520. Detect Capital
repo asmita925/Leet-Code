@@ -1,0 +1,37 @@
+class Solution {
+public:
+    bool detectCapitalUse(string word) {
+        int i = 0;
+        bool shouldBeLower = false, shouldBeUpper = false;
+        
+        if (word.length() <= 1)
+        {
+            return true;
+        }
+        
+        if (islower(word.at(0)) || (isupper(word.at(0)) && islower(word.at(1))))
+        {
+            shouldBeLower = true;
+        } else if (isupper(word.at(0)) && isupper(word.at(1))) {
+             shouldBeUpper = true;
+        }
+        
+        for (i = 1; i < word.length(); i++)
+        {
+            if (shouldBeLower)
+            {
+                if (isupper(word.at(i)))
+                {
+                    return false;
+                }
+            } else if (shouldBeUpper) {
+                if (islower(word.at(i)))
+                {
+                    return false;
+                }
+            }
+        } // end of for loop
+        
+        return true;
+    }
+};
