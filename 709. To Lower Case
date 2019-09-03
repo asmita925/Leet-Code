@@ -1,0 +1,19 @@
+class Solution {
+public:
+    string toLowerCase(string str) {
+        string s;
+        int i = 0;
+        
+        for (i = 0; i < str.length(); i++)
+        {
+            if (str.at(i) >= 'A' && str.at(i) <= 'Z')
+            {
+                s += str.at(i) - 'A' + 'a';
+            } else {
+                s += str.at(i);
+            }
+        } // end of for loop
+        
+        return s;
+    }
+};
