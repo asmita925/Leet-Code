@@ -1,0 +1,34 @@
+class Solution {
+public:
+    string removeDuplicates(string S) {
+        int i = 0;
+        string s = "";
+        stack<char> str;
+        
+        if (S.length() == 0)
+        {
+            return S;
+        }
+        
+        while (i < S.length())
+        {
+            if (!str.empty() && str.top() == S.at(i))
+            {
+                str.pop();
+            } else {
+                str.push(S.at(i));
+            }
+            
+            i++;
+        } // end of while loop   
+        
+        while(!str.empty())
+        {
+            s += str.top();
+            str.pop();
+        }
+        
+        reverse(s.begin(), s.end());
+        return s;
+    }
+};
