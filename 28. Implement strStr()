@@ -1,0 +1,34 @@
+class Solution {
+public:
+    int strStr(string haystack, string needle) {
+        int i = 0, j = 0;
+        
+        if (needle.length() > haystack.length())
+        {
+            return -1;
+        }
+        
+        if (needle.length() == 0)
+        {
+            return 0;
+        }
+        
+        for (i = 0; i < haystack.length()-needle.length()+1; i++)
+        {
+            for (j = 0; j < needle.length(); j++)
+            {
+                if (haystack.at(i+j) != needle.at(j))
+                {
+                    break;
+                }
+            
+                if (j == needle.length() - 1)
+                {
+                    return i;
+                }
+            }
+        }
+        
+        return -1;
+    }
+};
