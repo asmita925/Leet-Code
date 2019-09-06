@@ -1,0 +1,46 @@
+class Solution {
+public:
+    vector<vector<string>> groupAnagrams(vector<string>& strs) {
+        int i = 0;
+        string temp;
+        vector<string> result;
+        vector<vector<string>> anagramList;
+        
+        map <string, vector<int>> anagramMap;
+        map <string, vector<int>>::iterator it;
+        
+        for (i = 0; i < strs.size(); i++)
+        {
+            temp = strs[i];
+            sort(temp.begin(), temp.end());
+            
+            it = anagramMap.find(temp);
+            
+            if (it == anagramMap.end())
+            {
+                vector<int> indexList;
+                indexList.push_back(i);
+                anagramMap.insert(pair<string, vector<int>>(temp, indexList));
+            } else {
+                vector<int> indexList = it->second;
+                indexList.push_back(i);
+                it->second = indexList;
+            }
+        } // end of for loop
+        
+        for (it = anagramMap.begin(); it !=  anagramMap.end(); it++)
+        {
+            vector<int> indexList = it->second;
+            result.clear();
+            
+            for (i = 0; i < indexList.size(); i++)
+            {
+                result.push_back(strs[indexList[i]]);
+            }
+                                      
+            anagramList.push_back(result);
+        } // end of for loop
+        
+        return anagramList;
+    } // end of function
+};
