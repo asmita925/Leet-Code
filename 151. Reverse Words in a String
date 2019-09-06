@@ -1,0 +1,48 @@
+class Solution {
+public:
+    string reverseWords(string s) {
+        string temp, resultStr;
+        int i = s.length()-1, end = 0;
+        
+        if (s.length() == 0)
+        {
+            return s;
+        }
+        
+        while (s.at(i) == ' ' && i > 0)
+        {
+            //rtrim
+            i--;
+        }
+        
+        while (end < s.length() && s.at(end) == ' ')
+        {
+            //ltrim
+            end++;
+        }
+        
+        for (i; i >= end; i--)
+        {
+            if (s.at(i) == ' ')
+            {
+                reverse(temp.begin(), temp.end());
+                if (temp.length() > 0)
+                {
+                    temp += s.at(i);
+                    resultStr += temp;
+                }
+                temp.clear();
+            } else {
+                temp += s.at(i);
+            }
+        } // end of for loop
+        
+        if (temp.length() > 0)
+        {
+            reverse(temp.begin(), temp.end());
+            resultStr += temp;    
+        }
+        
+        return resultStr;
+    } // end of fun
+};
